@@ -1,13 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="css/select2.css">  
+  <link rel="stylesheet" href="css/select2.css">
 </head>
+
 <body>
-  <script src="js/select2.jsj"></script>
+  <select name="city" id="city"></select>
+  <br>
+  <button type="button">更新数据</button>
+  <script src="js/jquery.js"></script>
   <script src="js/select2.js"></script>
+  <script>
+    let data = [{
+      id: 0,
+      text: '武汉'
+    }, {
+      id: 1,
+      text: '黄冈'
+    }, {
+      id: 2,
+      text: '黄石'
+    }, {
+      id: 3,
+      text: '恩施'
+    }]
+    $('[name=city]').select2({
+      width: '50%',
+      minimumResultsForSearch: -1, // 不需要搜索框
+      data: data
+    })
+
+    // 改变数据
+    $('button').on('click', function () {
+      data = [{
+        id: 4,
+        text: '新洲'
+      }, {
+        id: 5,
+        text: '洪山区'
+      }]
+      $('[name=city]').select2('destroy').empty()
+      $('[name=city]').select2({
+        width: '50%',
+        minimumResultsForSearch: -1, // 不需要搜索框
+        data: data
+      })
+    })
+  </script>
 </body>
+
 </html>
